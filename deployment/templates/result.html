@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loan Default Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Loan Default Prediction Result</h1>
+
+        <div class="alert 
+            {% if prediction == 0 %}
+                alert-success
+            {% else %}
+                alert-danger
+            {% endif %}
+            " role="alert"
+        >
+            {% if prediction == 0 %}
+                <h4 class="alert-heading">Not Default</h4>
+                <p>The loan is <strong>NOT DEFAULT</strong>. The borrower is likely to repay the loan.</p>
+            {% else %}
+                <h4 class="alert-heading">Default</h4>
+                <p>The loan is predicted to be <strong>DEFAULT</strong>. There is a risk of non-repayment.</p>
+            {% endif %}
+        </div>
+
+        <a href="/" class="btn btn-primary">Back to Form</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loan Default Prediction</title>
+</head>
+<body>
+    <h1>Loan Default Prediction Form</h1>
+    <form method="POST" action="/predict">
+	
+		<!-- Gross Charge -->
+        <label for="lp_grossprincipalloss">Gross Charge:</label><br />
+        <input type="number" id="lp_grossprincipalloss" name="lp_grossprincipalloss"  required /><br /><br />
+		
+        <!-- Net Principal Loss -->
+        <label for="lp_netprincipalloss">Net Principal Loss:</label><br />
+        <input type="number" id="lp_netprincipalloss" name="lp_netprincipalloss" required /><br /><br />
+
+        <!-- Loan Current Days Delinquent -->
+        <label for="loancurrentdaysdelinquent">Loan Current Days Delinquent:</label><br />
+        <input type="number" id="loancurrentdaysdelinquent" name="loancurrentdaysdelinquent" required /><br /><br />
+		
+		<!-- Collection Fees -->
+        <label for="lp_collectionfees">Collection Fees:</label><br />
+        <input type="number" id="lp_collectionfees" name="lp_collectionfees" required /><br /><br />
+
+        <!-- Delinquency Risk Score -->
+        <label for="delinquency_risk_score">Delinquency Risk Score:</label><br />
+        <input type="number" id="delinquency_risk_score" name="delinquency_risk_score" required /><br /><br />
+
+		<!-- Recovery Payment -->
+        <label for="lp_nonprincipalrecoverypayments">Recovery Payment:</label><br />
+        <input type="number" id="lp_nonprincipalrecoverypayments" name="lp_nonprincipalrecoverypayments" required /><br /><br />
+
+		<!-- Monthly Loan Payment-->
+        <label for="monthlyloanpayment">Monthly Loan Payment:</label><br />
+        <input type="number" id="monthlyloanpayment" name="monthlyloanpayment" required /><br /><br />
+		
+	    <!-- Investors -->
+        <label for="investors">Investors:</label><br />
+        <input type="number" id="investors" name="investors" required /><br /><br />
+
+		<!-- loan to Income-->
+        <label for="loan_to_income">loan to Income:</label><br />
+        <input type="number" id="loan_to_income" name="loan_to_income" step="0.001" required /><br /><br />
+
+        <!-- Customer Payments -->
+        <label for="lp_customerpayments">Customer Payments:</label><br />
+        <input type="number" id="lp_customerpayments" name="lp_customerpayments" required /><br /><br />
+	
+		
+	
+		<button type="submit">Predict Default Risk</button>
+    </form>
+    {% if prediction is defined %}
+        <h2>Prediction Result:</h2>
+        {% if prediction == 0 %}
+            <p style="color:green;">The loan is <strong>NOT DEFAULT</strong>.</p>
+        {% else %}
+            <p style="color:red;">The loan is <strong>DEFAULT</strong>.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
